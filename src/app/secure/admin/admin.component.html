@@ -1,1 +1,44 @@
-<p>admin works!</p>
+<div class="container">
+  <h2>Task Closure Reports</h2>
+
+  <div class="filters">
+    <label>Time Interval:</label>
+    <select [(ngModel)]="selectedInterval" (change)=" getSelectedIntervalLabel()">
+      <option value="week">This Week</option>
+      <option value="month">This Month</option>
+      <option value="custom">Custom Range</option>
+    </select>
+
+    <div *ngIf="selectedInterval === 'custom'" class="custom-date-range">
+      <div class="date-input">
+        <label>From:</label>
+        <input type="date" [(ngModel)]="customStartDate" required>
+      </div>
+      <div class="date-input">
+        <label>To:</label>
+        <input type="date" [(ngModel)]="customEndDate" required>
+      </div>  
+    </div>
+    <button class="btn btn-primary" (click)="fetchReports()">Fetch Reports</button>
+    <div *ngIf="errorDate">
+      <p class="error-message">{{errorDate}}</p>
+    </div>
+
+    <div *ngIf="error">
+      <p class="error-message">Error fetching data. Please try again later.</p>
+    </div>
+  </div>
+
+  <div *ngIf="reports && reports.length > 0">
+    <h3>Reports for {{ getSelectedIntervalLabel() }}</h3>
+    <ul>
+      <li *ngFor="let report of reports">
+        <p>{{ report.teamName }}: {{ report.tasksClosed }} tasks closed out of {{ report.totalTasks }} total tasks</p>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="reports && reports.length === 0 && !error">
+    <!-- <p class="success-message">No records found for {{ getSelectedIntervalLabel() }}</p> -->
+  </div>
+</div>

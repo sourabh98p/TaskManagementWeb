@@ -1,0 +1,49 @@
+<div>
+    <h1>Task Details</h1>
+</div>
+
+<div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+<div class="task-detail" *ngIf="task">
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <div>
+        <label for="statusSelect">Select Status:</label>
+        <select id="statusSelect" [(ngModel)]="selectStatus" (change)="updateTaskStatus()">
+          <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+        </select>
+    </div>
+  
+    <div class="task-actions" *ngIf="selectStatus !== 'Closed'">
+      <!-- Notes section -->
+      <div class="notes-section">
+        <textarea class="notes-input" placeholder="Add notes..." [(ngModel)]="newNote"></textarea>
+        <button class="btn btn-primary" (click)="addNote()">Add Note</button>
+      </div>
+  
+      <div class="notes-list" *ngIf="task.notes && task.notes.length > 0">
+        <h3>Notes:</h3>
+        <ul>
+          <li *ngFor="let note of task.notes">
+            <span class="note-content">{{ note.content }}</span>
+            <span class="note-date">{{ note.createdDate | date: 'medium' }}</span>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Attach documents section -->
+      <div class="documents-section">
+        <input type="file" class="file-input" (change)="handleFileInput($event)" />
+        <button class="btn btn-primary" (click)="uploadDocument()">Upload Document</button>
+      </div>
+  
+      <div class="documents-list" *ngIf="task.documents && task.documents.length > 0">
+        <h3>Documents:</h3>
+        <ul>
+          <li *ngFor="let document of task.documents">
+            <a href="{{ document.filepath }}" target="_blank">{{ document.filename }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

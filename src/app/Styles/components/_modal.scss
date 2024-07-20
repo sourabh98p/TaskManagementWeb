@@ -1,0 +1,189 @@
+﻿#popup_bg_header {
+    height: 32px;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    line-height: 32px;
+    font-weight: 400;
+
+    .headertitle {
+        font-size:18px;
+        line-height: 20px;
+        font-weight: 500;
+    }
+
+    .close {
+        border: none;
+        float: right;
+        margin: 10px 10px 0 0;
+    }
+}
+
+.popup_border, .SelectedSignalsPopupBorder, .greyborder, .summaryPopUp, .report-popup, .popupWrap, .smallpopups {
+    width: 100%;
+    float: left;
+    background: #fff;
+    padding: 16px;
+    display: none;
+    @include border-radius(2px);
+    @include box-shadow(0px 4px 6px rgba(0, 0, 0, .16));
+
+    .heading {
+        float: left;
+        font-size: 20px;
+        color: #000;
+    }
+
+    &.block{
+        display: block;
+    }
+
+    &.popup-scroll-y, &.popupScroll {
+        .popup-body, .popup_body, .popup-container {
+            overflow-y: auto;
+            //min-height: 150px;
+            max-height: calc(100vh - 257px);
+            padding-bottom: 0;
+        }
+
+        .buttonpanel {
+            padding-top: 16px;
+        }
+    }
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+.popup_borderFp {
+    background: #fff;
+    box-shadow: 0 0 20px #333;
+    padding: 16px;
+    border: 1px solid #999;
+    float: left;
+}
+
+.popup-body, .popup_body, .popup-container {
+    padding: 16px 0;
+    font-size: 14px;
+    line-height: 18px;
+    color: $primary-color;
+
+    label {
+        display: block;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 8px;
+    }
+
+    .fields {
+        padding-top: 12px;
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        .textarea-statusboard {
+            height: 36px;
+            min-height: 36px;
+            width: 100%;
+        }
+
+        .checkInRadio {
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 16px;
+            float: left;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 18px;
+                height: 18px;
+                margin-right: 4px;
+            }
+        }
+    }
+
+    &.popup-scroll {
+        overflow-y: auto;
+        max-height: 400px;
+        padding-bottom: 0;
+    }
+}
+
+.popup_position {
+    position: absolute;
+    top: 200px;
+    left: 110px;
+}
+
+.popup_bg_header, .popup_greybg_header, .summaryHead, .popup-title {
+    border-bottom: 1px solid #c8c9c7;
+    padding: 0 0 16px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    position: relative;
+
+    .headertitle {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 500;
+    }
+
+    img {
+        cursor: pointer !important;
+    }
+
+    div {
+        img {
+            cursor: pointer;
+        }
+    }
+
+    .note {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 7px 10px 2px;
+        font-size: 11px;
+        color: #666;
+        margin: 10px 0;
+
+        p {
+            line-height: 12px;
+            margin: 0 0 5px;
+        }
+
+        span {
+            color: #000;
+            float: left;
+            margin: 0 5px 20px 0;
+        }
+    }
+}
+
+.closePopup {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    background: url('#{$imgpath}/Close.svg') no-repeat;
+}
+
+.popupBg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1003;
+    background: #000;
+    filter: alpha(opacity=50);
+    opacity: .6;
+    width: 100%;
+    height: 100%;
+}
+
+.popupWrap {
+    word-wrap: break-word;
+    position: fixed;
+    z-index: 1004;
+}

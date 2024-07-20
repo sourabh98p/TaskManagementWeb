@@ -1,0 +1,144 @@
+// /* manager.component.scss */
+
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// .manager-container {
+//     max-width: 1200px;
+//     margin: 20px auto;
+//     padding: 20px;
+//     background-color: #f9f9f9;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+  
+//     h2 {
+//       margin-bottom: 20px;
+//       font-size: 24px;
+//     }
+  
+//     .create-task-btn {
+//       background-color: #007bff;
+//       color: white;
+//       border: none;
+//       padding: 10px 20px;
+//       font-size: 16px;
+//       cursor: pointer;
+//       border-radius: 4px;
+//       transition: background-color 0.3s;
+  
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+//     }
+  
+//     .filter-input {
+//       margin-left: 10px;
+//       margin-bottom: 10px;
+//       width: 200px;
+//     }
+//     .error-message {
+//         color: red;
+//         margin: 10px 0;
+//       }
+  
+//     .table-container {
+//       margin-top: 20px;
+//       overflow-x: auto;
+//       max-width: 100%;
+  
+//       table {
+//         width: 100%;
+//         margin: 0 auto;
+//         border-collapse: collapse;
+  
+//         th, td {
+//           padding: 10px;
+//           text-align: left;
+//         }
+  
+//         th {
+//           background-color: #f2f2f2;
+//         }
+  
+//         tr:nth-child(even) {
+//           background-color: #f9f9f9;
+//         }
+//       }
+//     }
+//   }
+  
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.manager-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .create-task-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .filter-input {
+    display: inline-block; /* Ensures elements are on the same line */
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+
+  .error-message {
+    color: red;
+    margin: 10px 0;
+  }
+
+  .table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+    max-width: 100%;
+
+    table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+
+  // Ensure mat-select options dropdown appears correctly
+  .mat-form-field {
+    display: inline-block; // Ensures mat-select and label are on the same line
+    width: 100%; // Adjust width as needed
+    max-width: 200px; // Example max-width for uniformity
+    margin-right: 10px; // Spacing between filter inputs
+  }
+}

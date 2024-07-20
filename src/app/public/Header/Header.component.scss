@@ -1,0 +1,53 @@
+@import '../../Styles/utills/variables';
+
+header {
+  .main-header {
+    border-bottom: 1px solid $border-color;
+    background: #ffffff;
+    float: left;
+    width: 100%;
+    margin-bottom: 24px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px 16px;
+
+    
+    .companylogo {
+      float: left;
+    }
+    
+    .btn-bordered {
+      min-width: 116px;
+    }
+    @media screen and (max-width: $mq-small) {
+      padding: 16px 16px 8px;
+      margin-bottom: 16px;
+      .companylogo {
+        width: 102px;
+      }
+      
+      .btn-bordered {
+        min-width: 76px;
+      }
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  margin-left: 20px;
+  padding-left: 20px;
+  font-size: 22px;
+  line-height: 24px;
+  border-left: 2px solid $border-color;
+  height: 24px;
+
+  @media screen and (max-width: $mq-small) {
+    display: none;
+  }
+}

@@ -1,0 +1,150 @@
+﻿%disable-styling {
+     &.disabled, &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover, &:active, &:focus {
+            background-color: $theme-red;
+            cursor: default;
+        }
+    }
+}
+%button-style {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-transform: uppercase;
+    border: 0;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    @include border-radius(2px);
+
+    &.none {
+        display: none;
+    }
+
+    @extend %disable-styling;
+}
+
+.button_style1 {
+    @extend %button-style;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #FFF;
+    width: auto;
+    height: 36px;
+    background-color: $theme-red;
+    padding: 10px 16px;
+    min-width: 137px;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #a00000;
+        -webkit-appearance: none;
+        color: #FFF;
+    }
+}
+
+.button_style2 {
+    @extend %button-style;
+    background: $btn-dark-gray;
+    opacity: 1;
+    height: 32px;
+    line-height: 16px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 12px;
+    color: #FFF;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #383838;
+    }
+}
+
+.btn-gray {
+    background-color: $btn-gray !important;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #575757 !important;
+    }
+
+    @extend %disable-styling;
+}
+
+.btn-dark-gray {
+    background-color: $btn-dark-gray !important;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #383838 !important;
+    }
+
+    @extend %disable-styling;
+}
+
+.dropdown-btn {
+    padding-right: 36px;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    color: $theme-red;
+    border: 1px solid $border-color;
+}
+
+.btn-sm {
+    height: 36px !important;
+    min-width: 60px;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    padding: 8px 16px;
+}
+
+.btn-xs {
+    height: 28px !important;
+    min-width: 64px;
+    padding: 7px 16px;
+    font-size: 12px !important;
+    line-height: 14px !important;
+}
+
+.disabledBtn {
+    background: $link-disable;
+    color: #fff;
+
+    &:hover, &:active {
+        background: $link-disable;
+        color: #fff;
+    }
+}
+
+.btn-link {
+    @extend %button-style;
+    @extend a;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    text-transform: none;
+
+    &.aspbutton-disabled, &.disabled, &[disabled] {
+        background: transparent !important;
+        color: $text-gray !important;
+        cursor: default !important;
+
+        &:hover, &:active, &:focus {
+            background: transparent !important;
+            color: $text-gray !important;
+            cursor: default !important;
+        }
+    }
+}
+.btn-bordered {
+    @extend %button-style;
+    border: 1px solid $theme-red;
+    background-color: transparent;
+    color: $theme-red;
+}

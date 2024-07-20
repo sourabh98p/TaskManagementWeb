@@ -1,0 +1,43 @@
+@import '../../Styles//utills/index';
+:host{
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+footer {
+    background: $footer-bg;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+    border-top: 1px solid $border-color;
+    @include box-shadow(0px -1px 2px rgba(0,0,0,0.1));
+    text-align: center;
+    clear: both;
+    flex-wrap: wrap;
+    &:before, &:after {
+        content: '';
+        clear: both;
+    }
+    @media screen and (max-width: 600px) {
+       line-height: 18px;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+        color: $link-color;
+    }
+}
+.main-footer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+     & > div{
+        margin-left: 4px;
+        @media screen and (max-width: 600px) {
+            display: block;
+        }
+     }
+}

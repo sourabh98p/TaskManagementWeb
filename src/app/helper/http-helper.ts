@@ -26,6 +26,13 @@ export class HttpHelper {
             })
             .pipe(catchError(this.handleError));
     }
+    public postHelperWithoutToken<T>(body: any, Url: any): Observable<T> {
+        return this.httpClient
+            .post<T>(Url, body, {
+                headers: this.getHttpHeader()
+            })
+            .pipe(catchError(this.handleError));
+    }
     public getHelperTest<T>(url:string) :Observable<T> {
         return this.httpClient.get<T>(url).pipe(catchError(this.handleError));
     }

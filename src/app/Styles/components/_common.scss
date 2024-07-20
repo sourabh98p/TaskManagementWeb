@@ -1,0 +1,265 @@
+﻿@include reset-css;
+@import "./_fonts";
+@import "./_icons";
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+p,
+div,
+a,
+img,
+ul,
+li {
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+.float-none {
+  float: none !important;
+}
+.p-0 {
+  padding: 0 !important;
+}
+.font-16 {
+  font-size: 16px;
+}
+.font-14 {
+  font-size: 14px;
+}
+.bold {
+  font-weight: 600;
+}
+.pl-24 {
+  padding-left: 24px !important;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.pr-24 {
+  padding-right: 24px !important;
+}
+.sep-border {
+  width: 300px;
+  height: 1px;
+  background-color: #c8c9c7;
+  display: flex;
+  margin: 0 auto;
+  @media screen and (max-width: $mq-medium) {
+    width: 100%;
+  }
+}
+input,
+select,
+textarea,
+button {
+  font-family: $font-family;
+  vertical-align: middle;
+}
+
+html,
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $text-color;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: $body_background-color;
+  display: flex;
+  flex-direction: column;
+  /*overflow-x: hidden;*/
+}
+p {
+  font-size: inherit;
+  line-height: 15px;
+}
+.container {
+  width: 100%;
+  max-width: $wrapper-width;
+  margin: 0 auto;
+  @media screen and (max-width: #{$wrapper-width + 32px}) {
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+}
+.none {
+  display: none;
+}
+
+.box-shadow {
+  @include box-shadow($box-shadow);
+}
+/*******    Alert Sucess Message ******/
+
+.steps {
+  @extend %steps;
+}
+.form-label {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 8px;
+}
+.p-element {
+  .p-dropdown {
+    width: 100% !important;
+  }
+}
+
+.helpIcon {
+  background: url(#{$imgpath}/help-icon.svg) no-repeat 0 0;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  border: 0;
+  outline: 0;
+}
+.img-responsive {
+  max-width: 100%;
+}
+.errMsg {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: normal;
+  color: $theme-red;
+  font-family: $font-family;
+}
+.common-success-message {
+  color: $successMsgColor;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 500;
+}
+.server-response-err {
+  margin-bottom: 8px;
+
+  .errMsg {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+  }
+}
+
+.calenderIcon {
+  background: url(#{$imgpath}/calendar-info-arrow-sprites.svg) no-repeat;
+  background-position: -87px 1px;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+h1 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.mb-16 {
+  margin-bottom: 16px;
+}
+.custom-radio {
+  input[type="radio"] {
+    &::after {
+      top: 0 !important;
+    }
+    &::before {
+      top: 5px !important;
+    }
+  }
+  @media screen and (max-width: $mq-small) {
+    margin-right: 8px !important;
+  }
+}
+p-dialog {
+  .p-dialog-header-icon {
+    display: none;
+  }
+  .p-dialog {
+    padding: 16px;
+    width: 282px;
+    background-color: #fff;
+    .p-dialog-header {
+      border-radius: 2px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #c8c9c7;
+      .p-dialog-title {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #000;
+      }
+    }
+    .p-dialog-content {
+      padding-top: 16px;
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 400;
+      color: #000;
+      border-radius: 0;
+      p {
+        line-height: 18px;
+        font-size: 14px;
+      }
+      button {
+        float: right;
+        min-width: 74px;
+      }
+    }
+  }
+}
+
+p-blockui {
+  .p-blockui {
+    z-index: 99999;
+    &.p-component-overlay-enter {
+      animation: none;
+    }
+    &.p-component-overlay {
+      background-color: $loader-bg;
+    }
+  }
+}
+.p-component-overlay-enter {
+  animation: p-component-overlay-enter-animation 150ms forwards;
+}
+@keyframes p-component-overlay-enter-animation {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: $loader-bg;
+  }
+}
+.required {
+  margin-left: 0.25em;
+  color: #ce0000;
+  font-size: 1em;
+  vertical-align: baseline;
+  font-family: unset;
+  line-height: 1em;
+}
+.p-datepicker-header {
+  margin-bottom: 16px;
+}
+.p-datepicker-month {
+  margin-right: 4px;
+}
+.p-yearpicker,
+.p-monthpicker {
+  .p-ripple {
+    padding: 8px;
+  }
+}

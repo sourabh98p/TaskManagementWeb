@@ -12,11 +12,12 @@ export interface Task{
     id?: number;
     title:string
     description: string;
-    assigneeId: number; // Assuming assigneeId is used to reference employees
+    assignedTo: number; // Assuming assigneeId is used to reference employees
+    createdBy : number;
     assigneeName?: string; // Optional field for employee name (if available)
     status: string;
-    createdDate?: Date;
-    lastUpdated?: Date;
+    createdAt?: Date;
+    UpdatedAt?: Date;
     notes?: Note[];
     documents?: Document[];
   }

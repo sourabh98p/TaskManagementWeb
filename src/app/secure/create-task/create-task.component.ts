@@ -13,10 +13,10 @@ import { Router , ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-task.component.scss']
 })
 export class CreateTaskComponent implements OnInit {
-  taskForm: FormGroup;
+  taskForm!: FormGroup;
   assignees: Employee[] = [];
   errorMessage: string = '';
-  TaskRequest!: Task;
+  TaskRequest!: Task ;
   isEditMode  = true;
   statusOptions: string[] = ['To-Do', 'Inprogress', 'Inreview', 'Closed'];
   constructor(
@@ -26,13 +26,7 @@ export class CreateTaskComponent implements OnInit {
     private commonService : CommonService,
     private route: ActivatedRoute,
   ) {
-    this.taskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      assigneeId: ['', Validators.required],
-      taskStatus : [''],
-      attachment: [null] // Optional attachment
-    });
+    
   }
 
   ngOnInit(){
@@ -52,7 +46,7 @@ export class CreateTaskComponent implements OnInit {
         this.taskForm.patchValue({
           title: this.TaskRequest.title,
           description: this.TaskRequest.description,
-          assigneeId: this.TaskRequest.assigneeId,
+          assigneeId: this.TaskRequest.assignedTo,
           taskStatus : this.TaskRequest.status
         });
         this.isEditMode = true; // Enter edit mode
@@ -72,10 +66,14 @@ export class CreateTaskComponent implements OnInit {
     this.errorMessage = '';
     if(this.taskForm.valid){
       this.commonService.showLoader();
-      this.TaskRequest.title = this.taskForm.get('title')?.value;
-      this.TaskRequest.assigneeId = this.taskForm.get('assigneeId')?.value;
-      this.TaskRequest.description = this.taskForm.get('description')?.value;
-      this.taskService.createTask(this.TaskRequest).subscribe({
+      this.TaskRequest = {
+        title : this.taskForm.get('title')?.value,
+        assignedTo : this.taskForm.get('assigneeId')?.value,
+        description : this.taskForm.get('description')?.value,
+        createdBy :  this.commonService.getUserid(),
+        status : "To-Do"
+      };
+      this.taskService.createTask(this.TaskRequest , this.isEditMode).subscribe({
         next : (response) => {
             this.commonService.hideLoader();
             if(response.isSuccess){ 

@@ -44,7 +44,7 @@ export class LoginComponent {
             this.commonService.setTokenDetails(this.LoginResponseModel.tokenDetails);
             let role = this.LoginResponseModel.userDetails.role;
             this.commonService.setRole(role);
-            this.commonService.setUserId(this.LoginResponseModel.userDetails.UserId);
+            this.commonService.setUserId(this.LoginResponseModel.userDetails.userId);
             if (role === 'admin') {
               this.router.navigate(['/admin']);
             } else if (role === 'manager') {

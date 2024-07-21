@@ -10,12 +10,12 @@ import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, data: { roles: ['admin'] } },
-  { path: 'employee', component: EmployeeComponent,  data: { roles: ['employee'] } },
-  { path: 'manager', component: ManagerComponent,  data: { roles: ['manager'] } },
-  { path: 'manager/createTask', component: CreateTaskComponent,  data: { roles: ['manager'] } },
-  {path: 'manager/EditTask/:id', component: CreateTaskComponent ,  data : {roles : ['manager']}},
-  {path: 'employee/mangeTask/:id', component: TaskDetailEmployeeComponent ,  data : {roles : ['employee']}},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard],data: { roles: ['admin'] } },
+  { path: 'employee', component: EmployeeComponent,  canActivate: [AuthGuard],data: { roles: ['employee'] } },
+  { path: 'manager', component: ManagerComponent,  canActivate: [AuthGuard],data: { roles: ['manager'] } },
+  { path: 'manager/createTask', component: CreateTaskComponent, canActivate: [AuthGuard], data: { roles: ['manager'] } },
+  {path: 'manager/EditTask/:id', component: CreateTaskComponent , canActivate: [AuthGuard], data : {roles : ['manager']}},
+  {path: 'employee/mangeTask/:id', component: TaskDetailEmployeeComponent , canActivate: [AuthGuard], data : {roles : ['employee']}},
   { path: '**', redirectTo: '/login' } // Handle invalid routes
 ];
 

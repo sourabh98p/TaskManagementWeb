@@ -42,10 +42,12 @@ export class ManagerComponent implements OnInit {
 
 
   getTasksAndEmployees(){
+    this.commonService.showLoader();
     this.errorMessage ='';
-    this.taskService.getTasksAndEmployees(this.commonService.getTeamid()).subscribe({
+    this.taskService.getTasksAndEmployees(this.commonService.getUserid()).subscribe({
       next: (respose) => {
         if(respose.isSuccess){
+          this.commonService.hideLoader();
            this.TaskAndEmployeeModel = respose.data;
            this.dataSource.data = this.TaskAndEmployeeModel.taskList
            if(this.TaskAndEmployeeModel.taskList.length <= 0){
@@ -73,7 +75,7 @@ export class ManagerComponent implements OnInit {
     this.dataSource.filterPredicate = (data: Task, filtersJson: string) => {
       const filters = JSON.parse(filtersJson);
       return (
-        (filters.filterAssigneeId ? data.assigneeId === filters.filterAssigneeId : true) &&
+        (filters.filterAssigneeId ? data.assignedTo === filters.filterAssigneeId : true) &&
         (filters.filterStatus ? data.status.toLowerCase() === filters.filterStatus.toLowerCase() : true)
       );
     };

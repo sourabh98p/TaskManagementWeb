@@ -19,6 +19,7 @@ export class TaskDetailEmployeeComponent implements OnInit {
   selectedFile!: File;
   errorMessage ='';
   selectStatus = '';
+  taskid = 0;
   constructor(
     private route: ActivatedRoute,
     private taskService: TaskService,
@@ -28,11 +29,7 @@ export class TaskDetailEmployeeComponent implements OnInit {
   ngOnInit(): void {
     const taskId = this.route.snapshot.paramMap.get('id');
     this.errorMessage ='';
-    let requestData: any = {
-      Id: taskId,
-      isEmployee: true
-    };
-    this.taskService.getTaskDetails(requestData).subscribe({
+    this.taskService.getTaskDetails(taskId).subscribe({
       next: (respose) => {
         if(respose.isSuccess){
            this.task = respose.data;
@@ -51,23 +48,35 @@ export class TaskDetailEmployeeComponent implements OnInit {
   }
 
   addNote(): void {
+    this.commonService.showLoader();
     if (!this.task.notes) {
       this.task.notes = [];
     }
-    const newNoteObj: Note = {
+    
+    const newNoteObj: any = {
       content: this.newNote,
-      createdDate: new Date(),
-      id : this.task.id
-
+      taskId : this.task.id,
+      createdBy : this.commonService.getUserid()
     };
-    this.task.notes.push(newNoteObj);
-    // let request:any = {
-    //   notes : newNoteObj.content,
-    //   createDate : newNoteObj.createdDate,
-    //   taskId : this.task.id
-    // }
-    this.taskService.updateTask(newNoteObj).subscribe(updatedTask => {
-      this.newNote = '';
+    //this.task.notes.push(newNoteObj);
+    this.taskService.updateTask(newNoteObj , true).subscribe(
+    {
+      next: (respose) => {
+        this.commonService.hideLoader();
+        if(respose.isSuccess){
+          
+          this.task.notes?.push(respose.data);
+          this.newNote = '';
+        }
+        else{
+          this.errorMessage = 'Add Note Un-successfull.';
+        }
+      },
+      error : (error) => {
+        this.commonService.hideLoader();
+        this.errorMessage = 'An error occurred. Please try again later.';
+        throw error;
+    }
     });
   }
 
@@ -79,19 +88,22 @@ export class TaskDetailEmployeeComponent implements OnInit {
     if (!this.selectedFile) {
       return;
     }
-
+    this.commonService.showLoader();
     let request : any = {
       fileData : this.selectedFile,
-      id :  this.task.id
+      taskId :  this.task.id,
+      createdBy : this.commonService.getUserid()
     }
-    this.taskService.updateTask(request).subscribe({
+    this.taskService.updateTask(request , false).subscribe({
       next: (respose) => {
+        this.commonService.hideLoader();
         if(respose.isSuccess){
-           this.task.documents = respose.data;
+          
+           this.task.documents?.push(respose.data);
 
         }
         else{
-          this.errorMessage = 'An error occurred. Please try again later.';
+          this.errorMessage = 'Upload Document Un-successfull.';
         }
       },
       error : (error) => {
@@ -104,18 +116,21 @@ export class TaskDetailEmployeeComponent implements OnInit {
   
 
   updateTaskStatus(): void {
+    this.commonService.showLoader();
     this.task.status = this.selectStatus;
-    let request : any = {
-      taskStatus : this.selectedFile,
-      id :  this.task.id
-    }
-    this.taskService.updateTask(this.task).subscribe({
+    this.taskService.createTask(this.task, true).subscribe({
       next: (updatedTask) => {
-       
+        
+        this.commonService.hideLoader();
+        if(!updatedTask.isSuccess){
+          this.errorMessage = 'Status Update Un-SuccessFul';
+        }
+             
       },
       error: (error) => {
-        console.error('Error updating task status:', error);
-        // Handle error
+        this.commonService.hideLoader();
+        this.errorMessage = 'An error occurred. Please try again later.';
+        throw error;
       }
     });
   }

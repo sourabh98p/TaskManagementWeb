@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent  implements OnInit {
-  public TaskAndEmployeeModel : taskAndEmployeeResponse = new taskAndEmployeeResponse();
+  public TaskModel : Task[] = [];
   displayedColumns: string[] = ['id', 'title', 'assigneeName', 'status', 'createdDate', 'lastUpdated'];
   dataSource: MatTableDataSource<Task> = new MatTableDataSource<Task>();
   filterAssigneeId: number | null = null;
@@ -42,13 +42,15 @@ export class EmployeeComponent  implements OnInit {
 
 
   getEmployeeTasks(){
+    this.commonService.showLoader();
     this.errorMessage ='';
-    this.taskService.getEmployeeTasks(this.commonService.getUserid).subscribe({
+    this.taskService.getEmployeeTasks(this.commonService.getUserid()).subscribe({
       next: (respose) => {
         if(respose.isSuccess){
-           this.TaskAndEmployeeModel = respose.data;
-           this.dataSource.data = this.TaskAndEmployeeModel.taskList
-           if(this.TaskAndEmployeeModel.taskList.length <= 0){
+          this.commonService.hideLoader();
+           this.TaskModel = respose.data;
+           this.dataSource.data = this.TaskModel;
+           if(this.TaskModel.length <= 0){
             this.errorMessage = 'No record Found !';
            }
         }
@@ -70,7 +72,7 @@ export class EmployeeComponent  implements OnInit {
     this.dataSource.filterPredicate = (data: Task, filtersJson: string) => {
       const filters = JSON.parse(filtersJson);
       return (
-        (filters.filterAssigneeId ? data.assigneeId === filters.filterAssigneeId : true) &&
+        (filters.filterAssigneeId ? data.assignedTo === filters.filterAssigneeId : true) &&
         (filters.filterStatus ? data.status.toLowerCase() === filters.filterStatus.toLowerCase() : true)
       );
     };
@@ -106,7 +108,7 @@ export class EmployeeComponent  implements OnInit {
   }
   onTaskClick(id: any){
      this.commonService.clearTaskDetails;
-     var detail = this.TaskAndEmployeeModel.taskList.find(x => x.id === id);
+     var detail = this.TaskModel.find(x => x.id === id);
      this.commonService.setTaskDetails(detail);
      this.router.navigate(['/task', id]);
   }

@@ -22,6 +22,7 @@
     "@angular/router": "^16.2.0",
     "@material/form-field": "^15.0.0-canary.bc9ae6c9c.0",
     "@material/select": "^15.0.0-canary.bc9ae6c9c.0",
+    "date-fns": "^3.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^10.0.0",

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TaskDetailEmployeeComponent } from './secure/task-detail-employee/task-detail-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfigurationService } from './services/ConfigurationService/configuration.service';
 
 
 @NgModule({
@@ -52,7 +53,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+        useFactory: (configService: ConfigurationService) => (): Promise<boolean> => configService.loadConfigurationData(),
+        deps: [ConfigurationService],
+        multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

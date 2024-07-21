@@ -21,15 +21,6 @@
           Assignee is required.
       </div>
 
-      <label for="attachment">Attachment</label>
-      <input id="attachment" type="file" (change)="onFileChange($event)">
-     <div *ngif="isEditMode">
-        <label for="statusSelect">Select Status:</label>
-        <select id="statusSelect" formControlName="taskStatus" >
-          <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-        </select>
-      </div>
-
       <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
 
       <div class="button-container">

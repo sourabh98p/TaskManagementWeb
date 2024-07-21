@@ -9,10 +9,10 @@ export class TokenDetails {
 
 export class UserDetails {
     fullName!: string;
-    UserId!: number;
+    userId!: number;
     email!: string;
     role!: string;
-    teamid! : number;
+    teamId! : number;
 }
 
 export class LoginResponse {

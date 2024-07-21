@@ -70,7 +70,7 @@ export class CommonService {
   }
   getUserid(): any {
     var Userid = sessionStorage.getItem("UserId")
-    return Userid ? JSON.parse(Userid) : 0;
+    return Userid  ? JSON.parse(Userid) : 0;
   }
   clearUserid(): any {
     sessionStorage.removeItem("UserId");

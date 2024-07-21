@@ -26,12 +26,11 @@ export class AdminComponent {
   }
 
   fetchReports() {
-    console.log("hii sourabh",this.customEndDate);
+    debugger;
    this.errorDate = '';
     if (this.selectedInterval === 'custom' && this.customStartDate !== null && this.customStartDate !== undefined && this.customStartDate !== '' 
     && this.customEndDate !== null && this.customEndDate !== undefined && this.customEndDate !== '') {
       if (new Date(this.customStartDate) > new Date(this.customEndDate)) {
-        console.error('Start date cannot be later than end date.');
         this.errorDate = 'Start date cannot be later than end date.'; 
         this.reports = []; 
         return;

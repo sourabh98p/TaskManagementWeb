@@ -36,5 +36,7 @@ export interface Note {
     id?: number;
     filename: string;
     filepath: string;
+    size: number;
+    contentType: string;
   }
   

@@ -57,6 +57,7 @@ export class CreateTaskComponent implements OnInit {
         title: ['', Validators.required],
         description: ['', Validators.required],
         assigneeId: ['', Validators.required],
+        attachment: [null] // Optional attachment
       });
     }
   
@@ -96,6 +97,13 @@ export class CreateTaskComponent implements OnInit {
   isFormDirty(): boolean {
     return JSON.stringify(this.taskForm.value) !== JSON.stringify(this.fb);
   }
+  onFileChange(event: any) {
+    // Handle file change event and set the attachment control value
+    const file = event.target.files[0];
+    // this.taskForm.patchValue({
+    //     attachment: file
+    // });
+}
   onCancel(){
     this.router.navigate(['/manager']);
   }

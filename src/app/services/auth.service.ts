@@ -1,49 +1,55 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpHelper } from '../helper/http-helper';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { LoginRequest, TokenDetails } from '../models/user-response';
+import { ServiceResponseModel } from '../models/Common-model';
+import { ConfigurationService } from './ConfigurationService/configuration.service';
+import { CommonService } from './common.service';
+import { UserDetails } from '../models/user-response';
+import { isAfter, parseISO } from 'date-fns';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://your-api-url'; // Replace with your API URL
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
-
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  public UserResponse: UserDetails = new UserDetails();
+  constructor(private httpHelper: HttpHelper ,private configurationService: ConfigurationService , private commonService :  CommonService) {
   }
 
-  public get currentUserValue() {
-    return this.currentUserSubject.value;
+  isLoggedIn(): boolean {
+    return this.commonService.getRole() !==null;
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        }
+  login(model: LoginRequest): Observable<ServiceResponseModel> {
+    return this.httpHelper.postHelperWithoutToken(model, this.configurationService.validateUserUrl);
 
-        return user;
-      }));
+}
+
+getUserRole(): string {
+  return this.commonService.getRole();
+}
+
+isAccessTokenExpire(): boolean {
+  let isTokenExpired = true;
+  const tokenDetails = this.commonService.getTokenDetails() ? JSON.parse(this.commonService.getTokenDetails()) as TokenDetails : null;
+
+  if (tokenDetails && tokenDetails.tokenExpriationDate) {
+    const expirationDate = parseISO(tokenDetails.tokenExpriationDate.toString());
+    if (isAfter(expirationDate, new Date())) {
+      isTokenExpired = false;
+    }
   }
 
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
+  return isTokenExpired;
+}
 
-  // Example method to get user role after login
-  getUserRole() {
-    const user = this.currentUserValue;
-    return user && user.role;
-  }
+logout(): void {
+  this.commonService.clearRole;
+  this.commonService.clearTokenDetails;
+  this.commonService.clearUserDetails;
+  this.commonService.clearUserid;
+  // Implement logout logic, clear session or token if necessary
+}
+
 }

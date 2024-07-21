@@ -1,0 +1,327 @@
+﻿
+
+//----------- Margin Top --------------------//
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mt-4{
+    margin-top:4px;
+}
+.mt-8 {
+    margin-top: 8px;
+}
+.mt--8 {
+    margin-top: -8px;
+}
+.mt-12 {
+    margin-top: 12px;
+}
+.mt-16 {
+    margin-top: 16px
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-22 {
+    margin-top: 22px
+}
+.mt-24 {
+    margin-top: 24px;
+}
+.mt-26 {
+    margin-top: 26px;
+}
+.mt-28 {
+    margin-top: 28px
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mt-32 {
+    margin-top: 32px;
+}
+.mt-34 {
+    margin-top: 34px;
+}
+.mt-40 {
+    margin-top: 40px;
+}
+.mt-46 {
+    margin-top: 46px;
+}
+
+//----------- Margin Bottom --------------------//
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.mb-40 {
+    margin-bottom: 40px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-4 {
+    margin-bottom: 4px !important;
+}
+.mb-8 {
+    margin-bottom: 8px !important;
+}
+.mb-11 {
+    margin-bottom: 11px !important;
+}
+.mb-12 {
+    margin-bottom: 12px !important;
+}
+.mb-16 {
+    margin-bottom: 16px !important;
+}
+.mb-21 {
+    margin-bottom: 21px !important;
+}
+.mt-22 {
+    margin-top: 22px
+}
+.mb-24 {
+    margin-bottom: 24px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-40 {
+    margin-bottom: 40px;
+}
+//----------- Margin Left --------------------//
+.ml-4,
+.margin-left-4,
+.margin-left-4 {
+    margin-left: 4px !important;
+}
+.ml-6 {
+    margin-left: 6px;
+}
+.ml-8 {
+    margin-left: 8px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.ml-12 {
+    margin-left: 12px;
+}
+.ml-14 {
+    margin-left: 14px;
+}
+.ml-16 {
+    margin-left: 16px;
+}
+
+.ml-24 {
+    margin-left: 24px;
+}
+
+
+
+//----------- Margin Right --------------------//
+.mr-0 {
+    margin-right: 0 !important;
+}
+.margin-left-8 {
+    margin-right: 8px;
+}
+.mr-4 {
+    margin-right: 4px !important;
+}
+.mr-8 {
+    margin-right: 8px;
+}
+.mr-16 {
+    margin-right: 16px;
+}
+.mr-24 {
+    margin-right: 24px;
+}
+.mr-40{
+    margin-right: 40px;
+}
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.pb-0 {
+    padding-bottom: 0px !important;
+}
+
+.pb-4 {
+    padding-bottom: 4px
+}
+
+.pb-8 {
+    padding-bottom: 8px !important;
+}
+
+.pb-16 {
+    padding-bottom: 16px;
+}
+
+.pb-24 {
+    padding-bottom: 24px;
+}
+
+.pt-4 {
+    padding-top: 4px;
+}
+.pt-8 {
+    padding-top: 8px !important;
+}
+.pt-10 {
+    padding-top: 10px !important;
+}
+
+.pt-16 {
+    padding-top: 16px;
+}
+
+.pt-24 {
+    padding-top: 24px;
+}
+
+.pl-4 {
+    padding-left: 4px;
+}
+.pl-8 {
+    padding-left: 8px;
+}
+
+.pl-16 {
+    padding-left: 16px;
+}
+
+.pl-24 {
+    padding-left: 24px;
+}
+
+.pl-28 {
+    padding-left: 28px;
+}
+
+.pr-4 {
+    padding-right: 4px;
+}
+.pr-8 {
+    padding-right: 8px;
+}
+.pr-16 {
+    padding-right: 16px;
+}
+.pr-24 {
+    padding-right: 24px;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pd-16 {
+    padding: 16px !important;
+}
+
+.pd-12 {
+    padding: 12px !important;
+}
+
+.pd-12-8 {
+    padding: 12px 8px !important;
+}
+
+// *********** Font Sizes **************** //
+
+.font-14-m {
+    font-size: 14px !important;
+    line-height:16px !important;
+    font-weight: 500 !important;
+}
+
+.font-14-18-m {
+    @extend .font-14-m;
+    line-height: 18px !important;
+}
+.font-14-18-r {
+    font-size:14px !important;
+    line-height: 18px !important;
+}
+
+.font-14-r {
+    font-size: $font14 !important;
+    font-weight: normal !important;
+}
+
+.text-semibold, .font-sb {
+    font-weight: 600 !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-danger {
+    color: $theme-red !important;
+}
+
+.float-left {
+    float: left;
+}
+
+.min-width-100 {
+    min-width: 100px !important;
+}
+.width-100-per-float-left {
+    @extend %float-placeholder;
+}
+
+
+.pos-rel {
+    position:relative
+}
+.pos-abslt {
+    position:absolute
+}
+
+.no-wrap {
+    white-space:nowrap;
+}
+.no-input-bg {
+    background: transparent !important;
+}
+
+.border-bottom-gray {
+    border-bottom: 1px solid $border-color;
+}
+
+.border-top-gray {
+    border-top: 1px solid $border-color;
+}
+.text-capitalize{
+    text-transform: capitalize;
+}
+.bt-none{
+    border-top: 0 !important;
+}
+.no-pointer{
+    cursor: default !important;
+}
+.align-item-center{
+    align-items: center;
+}

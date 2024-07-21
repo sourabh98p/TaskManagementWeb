@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'TaskManagementWeb';
+  currentYear: number;
+  constructor(){
+    this.currentYear = new Date().getFullYear();
+  };
+
 }

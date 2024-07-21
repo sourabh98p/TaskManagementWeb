@@ -1,25 +1,31 @@
-export interface TokenDetails {
-    accessToken: string;
-    refreshToken: string;
-    tokenType: string;
-    tokenExpriationDate: Date;
-    expires_In: number;
-    refreshTokenExpriationDate: Date;
+export class TokenDetails {
+    accessToken!: string;
+    refreshToken!: string;
+    tokenType!: string;
+    tokenExpriationDate!: Date;
+    expires_In!: number;
+    refreshTokenExpriationDate!: Date;
 }
 
-export interface UserDetails {
-    firstName: string;
-    lastName: string;
-    UserId: number;
-    email: string;
-    role : string;
+export class UserDetails {
+    fullName!: string;
+    userId!: number;
+    email!: string;
+    role!: string;
+    teamId! : number;
 }
 
-export interface LoginResponse {
-    userDetails : UserDetails,
-    tokenDetails : TokenDetails
+export class LoginResponse {
+    userDetails!: UserDetails;
+    tokenDetails! : TokenDetails;
 }
-export interface LoginRequest {
-    email :  string;
-    password : string;
+export class LoginRequest {
+    email!: string;
+    password!: string;
+}
+
+export class ReportAdminResponse{
+    teamName!: string;
+    tasksClosed!: number;
+    totalTasks!: number;
 }

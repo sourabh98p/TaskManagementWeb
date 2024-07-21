@@ -1,0 +1,81 @@
+﻿/* Theme Common Variables*/
+$asset-path: '../../../assets';
+$imgpath: "#{$asset-path}/images";
+$fonts-path: "#{$asset-path}/fonts";
+$primary-color: #2D2926;
+$secondary-color: #75787B;
+$theme-red: #AB2328;
+$theme-green: #00966C;
+$light-bg: #f4f4f4;
+$light-skyblue: #E0EDFD;
+$white: #fff;
+$dropdown-bg: $white;
+
+$text-color: $primary-color;
+$text-gray: $secondary-color;
+$text-red: $theme-red;
+
+$link-color: #0084D0;
+$hover-color: #00629B;
+$body_background-color: $white;
+$tbl-hdr-bg: #F1F1F1;
+
+$wrapper-width: 1000px;
+$border-color: #C8C9C7;
+$link-disable: #C8C9C7;
+
+/* Button Types */
+$btn-gray: $secondary-color;
+$btn-red: $theme-red;
+$btn-dark-gray: $primary-color;
+$btn-text-color: $white;
+$btn-light-gray: $light-bg;
+
+/* Font sizes and Font Family */
+$font-family: 'Archivo', sans-serif;
+$font-size: 14px;
+
+$page-title-color: $primary-color;
+$page-title-font-size: 22px;
+$page-title-line-height: 24px;
+$page-title-padding-bottom: 8px;
+$page-header-size: normal normal medium 22px/24px;
+$font10: 10px;
+$font12: 12px;
+$font14: 14px;
+$font15: 15px;
+$font16: 16px;
+$font18: 18px;
+$font22: 22px;
+
+$border-radius: 2px;
+$user-thumb-border-radius:4px;
+$input-bg: $white;
+
+$footer-bg: $white;
+$footer-link-color: $link-color;
+$heighlight-color: #FFFFDE;
+$table-td-hover-bg: #FFFBF1;
+$panel-header-bg: #F4F4F4;
+$placeholder-color: rgba($color: $primary-color, $alpha: .5);
+
+$nav-hover-color: rgba($color: $theme-red, $alpha: .05);
+/**------------------ For Steps ------------**/
+$complete: #00966C;
+$active: #f68e20;
+$mute: #ffffff;
+$successMsgColor: #0A5E68;
+
+/* Schedule Legends colors */
+
+$schedule-yellow: #FCDE8E;
+$schedule-gray: #CECECE;
+
+$ui-slider-color: $border-color;
+
+// Responsive device width
+$mq-small: 550px;
+$mq-medium: 767px;
+$box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+
+$loader-bg: rgba($color: #fff, $alpha: 0.8);
